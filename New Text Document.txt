@@ -1,0 +1,34 @@
+Probelms I got during my Development process 
+
+1. correctly add the post man mechanism before sending the request make sure in the route of login you properly use this feature 
+  Body -> raw -> -> Json    and then send the request 
+
+
+2. make sure you propely add the details that are supposed to be inserted in 
+🔹 In Postman:
+Method: GET
+URL: http://localhost:5000/api/auth/profile
+Go to the "Headers" tab
+Add:
+--------------------------------------------
+| Key	       |     Value                 |
+|Authorization |	Bearer your_token_here |
+|Content-Type  |	application/json       |
+--------------------------------------------
+You can also go to the "Authorization" tab, select:
+Type: Bearer Token
+Token: Paste only the token (not "Bearer", just the JWT string)
+
+3. Always crete proper export statement for all the fils 
+4. The xp route is in the achivements.js file 
+5. we are giving 50 xp for each achivements 
+6. While creating the table of taskes in pgsql i have used the check function of sql which allows us to use options in the data
+as a check box 
+CREATE TABLE tasks (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    xp_reward INTEGER DEFAULT 0,
+    frequency VARCHAR(20) NOT NULL CHECK (frequency IN ('daily', 'monthly', 'yearly')),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
